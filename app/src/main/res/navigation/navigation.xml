@@ -23,4 +23,10 @@
         android:label="fragment_saved"
         tools:layout="@layout/fragment_saved" />
 
+    <fragment
+        android:id="@+id/tourFragment"
+        android:name="com.trip.tourvista.view.fragments.TourFragment"
+        android:label="fragment_tour"
+        tools:layout="@layout/fragment_tour" />
+
 </navigation>

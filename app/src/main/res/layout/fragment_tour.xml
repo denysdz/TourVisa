@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.fragments.TourFragment">
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/tourSliderImage"
+        android:layout_width="match_parent"
+        android:layout_height="241dp"/>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmerSliderImage"
+        android:layout_width="match_parent"
+        android:layout_height="221dp"
+        android:animateLayoutChanges="true"
+        android:animationCache="true"
+        app:shimmer_repeat_mode="restart"
+        app:shimmer_shape="radial">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="221dp"
+            android:orientation="vertical">
+
+            <include layout="@layout/shimmer_slider_img" />
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_marginTop="231dp"
+        android:layout_marginBottom="120dp"
+        android:fillViewport="true"
+        android:paddingHorizontal="25dp"
+        android:background="@drawable/tour_card_bottom"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:id="@+id/main_container"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/dots"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical|center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/btn_back"
+                    android:layout_width="wrap_content"
+                    android:paddingRight="20dp"
+                    android:src="@drawable/ic_back"
+                    android:layout_height="wrap_content"/>
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="0dp"/>
+
+                <ImageView
+                    android:id="@+id/btn_save"
+                    android:layout_width="wrap_content"
+                    android:src="@drawable/ic_saved_inactive"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/fieldName"
+                android:layout_width="match_parent"
+                android:text="Tour name"
+                android:textSize="19sp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/arimo_bold"
+                android:textColor="#000"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/fieldLocation"
+                android:layout_width="match_parent"
+                android:text="Location"
+                android:textSize="15sp"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/arimo_regular"
+                android:textColor="#000"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="120dp"
+                    android:orientation="vertical"
+                    android:layout_marginTop="12dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:src="@drawable/ic_more_date"
+                            android:layout_marginLeft="1.5dp"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:id="@+id/field_date"
+                            android:layout_width="wrap_content"
+                            android:text="00.00.00"
+                            android:textColor="#000"
+                            android:layout_marginLeft="7dp"
+                            android:fontFamily="@font/arimo_regular"
+                            android:textSize="15sp"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="12dp"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:src="@drawable/ic_transaport"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:id="@+id/field_transport"
+                            android:layout_width="wrap_content"
+                            android:text="Transport"
+                            android:textColor="#000"
+                            android:layout_marginLeft="7dp"
+                            android:fontFamily="@font/arimo_regular"
+                            android:textSize="15sp"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="12dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:src="@drawable/ic_more_people"
+                            android:layout_marginLeft="1.5dp"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:id="@+id/field_people"
+                            android:layout_width="wrap_content"
+                            android:text="0"
+                            android:textColor="#000"
+                            android:layout_marginLeft="7dp"
+                            android:fontFamily="@font/arimo_regular"
+                            android:textSize="15sp"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="12dp"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:src="@drawable/ic_food"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:id="@+id/field_food"
+                            android:layout_width="wrap_content"
+                            android:text="Food"
+                            android:textColor="#000"
+                            android:layout_marginLeft="7dp"
+                            android:fontFamily="@font/arimo_regular"
+                            android:textSize="15sp"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:text="Description"
+                android:textSize="16sp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/arimo_bold"
+                android:textColor="#000"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/field_description"
+                android:layout_width="match_parent"
+                android:text="Lorem ipsucfklsb v vbhdfbvkhdfvb kfjdhvb kjfvb jkdvbkjhvb kjfhb vkjfvb kjf vbkjfd vbkafjvbh afkjdv ajkvhb akjvhb akjvb akjvh "
+                android:textSize="15sp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/arimo_regular"
+                android:textColor="#000"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmerContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:animationCache="true"
+            app:shimmer_repeat_mode="restart"
+            app:shimmer_shape="radial">
+
+            <include layout="@layout/shimmer_tour_info" />
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="25dp"
+        android:layout_gravity="bottom"
+        android:layout_height="120dp">
+
+        <TextView
+            android:id="@+id/field_price"
+            android:layout_width="wrap_content"
+            android:text="Price 200$"
+            android:textSize="20sp"
+            android:textColor="#5834A8"
+            android:fontFamily="@font/arimo_bold"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btn_book_now"
+            android:layout_width="match_parent"
+            android:layout_marginTop="15dp"
+            android:text="Book now"
+            android:textColor="@color/white"
+            android:fontFamily="@font/arimo_bold"
+            android:textSize="16sp"
+            android:textAllCaps="false"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/btn_bg"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+
+</FrameLayout>

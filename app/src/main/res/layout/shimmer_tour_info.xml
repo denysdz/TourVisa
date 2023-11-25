@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/dots"
+            android:layout_below="@+id/viewPager"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/btn_back"
+                android:layout_width="wrap_content"
+                android:paddingRight="20dp"
+                android:src="@drawable/ic_back"
+                android:layout_height="wrap_content"/>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="0dp"/>
+
+            <ImageView
+                android:id="@+id/btn_save"
+                android:layout_width="wrap_content"
+                android:src="@drawable/ic_saved_inactive"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/fieldName"
+            android:layout_width="wrap_content"
+            android:text="Tour name"
+            android:textSize="19sp"
+            android:foreground="#B3B3B3"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/arimo_bold"
+            android:textColor="#000"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/fieldLocation"
+            android:layout_width="wrap_content"
+            android:text="Location"
+            android:foreground="#B3B3B3"
+            android:textSize="15sp"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/arimo_regular"
+            android:textColor="#000"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="12dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:src="@drawable/ic_more_date"
+                        android:layout_marginLeft="1.5dp"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/field_date"
+                        android:layout_width="wrap_content"
+                        android:text="00.00.00"
+                        android:foreground="#B3B3B3"
+                        android:textColor="#000"
+                        android:layout_marginLeft="7dp"
+                        android:fontFamily="@font/arimo_regular"
+                        android:textSize="15sp"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="12dp"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:src="@drawable/ic_transaport"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/field_transport"
+                        android:layout_width="wrap_content"
+                        android:text="Transport"
+                        android:foreground="#B3B3B3"
+                        android:textColor="#000"
+                        android:layout_marginLeft="7dp"
+                        android:fontFamily="@font/arimo_regular"
+                        android:textSize="15sp"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="12dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:src="@drawable/ic_more_people"
+                        android:layout_marginLeft="1.5dp"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/field_people"
+                        android:layout_width="wrap_content"
+                        android:text="0"
+                        android:foreground="#B3B3B3"
+                        android:textColor="#000"
+                        android:layout_marginLeft="7dp"
+                        android:fontFamily="@font/arimo_regular"
+                        android:textSize="15sp"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="12dp"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:src="@drawable/ic_food"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/field_food"
+                        android:layout_width="wrap_content"
+                        android:text="Food"
+                        android:foreground="#B3B3B3"
+                        android:textColor="#000"
+                        android:layout_marginLeft="7dp"
+                        android:fontFamily="@font/arimo_regular"
+                        android:textSize="15sp"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:text="Description"
+            android:textSize="16sp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/arimo_bold"
+            android:textColor="#000"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/field_description"
+            android:layout_width="match_parent"
+            android:text="Lorem ipsucfklsb jdhvb kjfvb jkdvbkjhvb"
+            android:textSize="15sp"
+            android:foreground="#B3B3B3"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/arimo_regular"
+            android:textColor="#000"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="10dp"
+    android:layout_height="180dp">
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="match_parent"
+        android:src="@drawable/tmpl"
+        android:scaleType="fitXY"
+        android:layout_height="180dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@drawable/card_dark"
+        android:layout_height="73dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:paddingVertical="15dp"
+            android:layout_weight="1"
+            android:paddingHorizontal="25dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:text="Name"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:singleLine="true"
+                android:fontFamily="@font/arimo_bold"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/country"
+                android:layout_width="wrap_content"
+                android:text="Country"
+                android:singleLine="true"
+                android:fontFamily="@font/arimo_regular"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:text="200$"
+            android:paddingHorizontal="20dp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:fontFamily="@font/arimo_bold"
+            android:gravity="end"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

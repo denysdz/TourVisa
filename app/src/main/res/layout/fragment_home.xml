@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/bg"
     tools:context=".view.fragments.HomeFragment">
+
     
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,21 +23,143 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginVertical="23dp"
         android:fontFamily="@font/arimo_bold"
-        android:textSize="32dp"
+        android:textSize="25dp"
         android:layout_height="wrap_content"/>
     
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_marginHorizontal="25dp"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="Hot offers 🔥"
+                android:textColor="#000"
+                android:fontFamily="@font/arimo_bold"
+                android:textSize="15sp"
+                android:layout_height="match_parent"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                app:cardCornerRadius="10dp"
+                android:layout_marginTop="15sp"
+                android:layout_height="wrap_content">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/tourSlider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmerLayoutSlider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="true"
+                android:animationCache="true"
+                app:shimmer_repeat_mode="restart"
+                app:shimmer_shape="radial">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/shimmer_layout" />
+
+                </LinearLayout>
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+            <LinearLayout
+                android:id="@+id/dots"
+                android:layout_below="@+id/viewPager"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical|center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="25dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="Recommended"
+                    android:layout_weight="1"
+                    android:textColor="#000"
+                    android:fontFamily="@font/arimo_bold"
+                    android:textSize="15sp"
+                    android:layout_height="match_parent"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="Show all"
+                    android:textColor="#000"
+                    android:fontFamily="@font/arimo_regular"
+                    android:textSize="15sp"
+                    android:layout_height="match_parent"/>
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/tourList"
+                android:layout_width="match_parent"
+                android:visibility="gone"
+                android:layout_height="wrap_content"/>
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmerLayoutList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="true"
+                android:animationCache="true"
+                app:shimmer_repeat_mode="restart"
+                app:shimmer_shape="radial">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <include
+                        android:layout_marginTop="15dp"
+                        layout="@layout/shimmer_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <include
+                        android:layout_marginTop="15dp"
+                        layout="@layout/shimmer_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+
+                    <include
+                        android:layout_marginTop="15dp"
+                        layout="@layout/shimmer_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+
+
+                </LinearLayout>
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
 
 
         </LinearLayout>
         
-    </ScrollView>
+    </LinearLayout>
 
     </LinearLayout>
 

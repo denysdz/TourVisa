@@ -29,4 +29,11 @@
         android:label="fragment_tour"
         tools:layout="@layout/fragment_tour" />
 
+    <fragment
+        android:id="@+id/allToursFragment"
+        android:name="com.trip.tourvista.view.fragments.AllToursFragment"
+        android:label="fragment_all_tour"
+        tools:layout="@layout/fragment_all_tours" >
+    </fragment>
+
 </navigation>

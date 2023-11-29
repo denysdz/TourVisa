@@ -1,18 +1,15 @@
 package com.trip.tourvista.view.adapter
 
 import android.content.Context
-import android.graphics.Rect
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.trip.tourvista.R
-import com.trip.tourvista.model.Tour
-import com.trip.tourvista.model.response.TourResponse
 
 
 class ImageSlideAdapter(
@@ -35,6 +32,7 @@ class ImageSlideAdapter(
             .apply(
                 RequestOptions()
                     .timeout(5000)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .placeholder(R.drawable.tmpl)
                     .error(R.drawable.tmpl)
             )

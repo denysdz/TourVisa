@@ -18,13 +18,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding:ActivityMainBinding
     private var navController: NavController? = null
 
-    private val exceptionsNavFragments = listOf(R.id.tourFragment)
+    private val exceptionsNavFragments = listOf(R.id.tourFragment, R.id.allToursFragment)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         initNavController()
         initNavListener()
     }

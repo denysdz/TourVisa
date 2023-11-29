@@ -102,6 +102,7 @@
                     android:layout_height="match_parent"/>
 
                 <TextView
+                    android:id="@+id/btn_show_all"
                     android:layout_width="wrap_content"
                     android:text="Show all"
                     android:textColor="#000"

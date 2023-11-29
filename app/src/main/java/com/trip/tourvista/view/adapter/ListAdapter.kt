@@ -9,16 +9,16 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.trip.tourvista.R
-import com.trip.tourvista.model.Tour
 import com.trip.tourvista.model.response.TourResponse
 
 
 class ListAdapter(
     private val context: Context,
     private val layout:Int,
-    private val tour: List<TourResponse>,
+    private val tour: MutableList<TourResponse>,
     private val adapterListener: AdapterListener
     ) :
     RecyclerView.Adapter<ListAdapter.TourViewHolder>() {
@@ -37,6 +37,7 @@ class ListAdapter(
                 RequestOptions()
                     .timeout(5000)
                     .placeholder(R.drawable.tmpl)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .error(R.drawable.tmpl) // Error image in case of loading failure
             )
             .into(holder.imageView)
@@ -55,6 +56,11 @@ class ListAdapter(
         val name: TextView = itemView.findViewById(R.id.name)
         val location: TextView = itemView.findViewById(R.id.country)
         val price: TextView = itemView.findViewById(R.id.price)
+    }
+
+    fun updateData(newItems: List<TourResponse>) {
+        tour.addAll(newItems)
+        notifyDataSetChanged()
     }
 
 }

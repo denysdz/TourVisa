@@ -15,16 +15,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.trip.tourvista.R
 import com.trip.tourvista.databinding.FragmentHomeBinding
-import com.trip.tourvista.model.Tour
 import com.trip.tourvista.model.response.BaseResponse
 import com.trip.tourvista.model.response.TourResponse
-import com.trip.tourvista.model.response.TourResponseWrapper
 import com.trip.tourvista.view.adapter.AdapterListener
 import com.trip.tourvista.view.adapter.ItemDecoration
 import com.trip.tourvista.view.adapter.ListAdapter
 import com.trip.tourvista.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(), AdapterListener {
@@ -54,6 +51,9 @@ class HomeFragment : Fragment(), AdapterListener {
         val itemDecoration = ItemDecoration(spaceHeightInPixels)
         binding.tourList.addItemDecoration(itemDecoration)
         updateUi()
+        viewBinding.btnShowAll.setOnClickListener {
+            findNavController().navigate(R.id.allToursFragment)
+        }
     }
 
     private fun updateUi () {
@@ -71,8 +71,8 @@ class HomeFragment : Fragment(), AdapterListener {
     private fun loadData (list: List<TourResponse>?) {
         val slider = list?.subList(0, 3)
         val bottomList = list?.subList(3, list.size-1)
-        sliderAdapter = ListAdapter(requireContext(), R.layout.slider_item, slider!!, this)
-        listAdapter = ListAdapter(requireContext(), R.layout.list_item, bottomList!!, this)
+        sliderAdapter = ListAdapter(requireContext(), R.layout.slider_item, slider?.toMutableList()!!, this)
+        listAdapter = ListAdapter(requireContext(), R.layout.list_item, bottomList?.toMutableList()!!, this)
         binding.shimmerLayoutList.stopShimmer()
         binding.shimmerLayoutSlider.stopShimmer()
         binding.shimmerLayoutList.visibility = View.GONE

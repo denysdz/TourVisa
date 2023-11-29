@@ -12,6 +12,13 @@ class TourRepository(private val apiService: TourApi) {
         return apiService.getOffers()
     }
 
+    suspend fun getAllTours (page:Int, limit:Int): Response<TourResponseWrapper> {
+        return apiService.getAllOffers(
+            page = page,
+            limit = limit
+        )
+    }
+
     suspend fun getTour (id:Long): Response<TourResponseWrapper> {
         return apiService.getOffer(id)
     }

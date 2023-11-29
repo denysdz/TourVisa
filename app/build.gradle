@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'com.google.dagger.hilt.android'
+    id "com.google.devtools.ksp"
     id 'kotlin-kapt'
 }
 
@@ -52,6 +53,8 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     kapt("com.google.dagger:hilt-android-compiler:2.48")
 
+    implementation "com.google.devtools.ksp:symbol-processing-api:1.6.21-1.0.6"
+
     //nav
     implementation 'androidx.navigation:navigation-fragment-ktx:2.7.4'
     implementation 'androidx.navigation:navigation-ui-ktx:2.7.4'
@@ -64,6 +67,10 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:4.9.1'
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+    implementation "androidx.room:room-runtime:2.3.0"
+    kapt "androidx.room:room-compiler:2.3.0"
+    implementation "androidx.room:room-ktx:2.3.0"
 
     //shimmer
     implementation 'com.facebook.shimmer:shimmer:0.4.0'

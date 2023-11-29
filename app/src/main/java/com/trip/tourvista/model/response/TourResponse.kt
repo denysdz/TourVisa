@@ -1,5 +1,7 @@
 package com.trip.tourvista.model.response
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 
@@ -7,7 +9,13 @@ data class TourResponseWrapper(
     @SerializedName("offer")
     val offers: List<TourResponse>
 )
+
+@Entity(tableName = "tour_responses")
 data class TourResponse(
+    @SerializedName("offer_id")
+    @PrimaryKey(autoGenerate = true)
+    val id:Int,
+
     @SerializedName("description")
     val description: String,
 
@@ -26,7 +34,7 @@ data class TourResponse(
     @SerializedName("night_count")
     val nightCount: Int,
 
-    @SerializedName("offer_id")
+    @SerializedName("uniq_id")
     val offerId: Long,
 
     @SerializedName("offer_name")

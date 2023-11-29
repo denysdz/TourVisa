@@ -14,6 +14,7 @@ import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.trip.tourvista.R
@@ -24,6 +25,7 @@ import com.trip.tourvista.view.adapter.ImageSlideAdapter
 import com.trip.tourvista.view.adapter.ListAdapter
 import com.trip.tourvista.viewmodel.TourViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import java.lang.reflect.Array
 
 
@@ -60,6 +62,9 @@ class TourFragment : Fragment() {
         viewBinding.shimmerContainer.get(0).findViewById<ImageView>(R.id.btn_back).setOnClickListener {
             findNavController().popBackStack()
         }
+        viewBinding.btnSave.setOnClickListener {
+            viewModel.save()
+        }
         viewBinding.btnBookNow.setOnClickListener {
             if (!moreData.equals("")) {
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(moreData))
@@ -69,8 +74,23 @@ class TourFragment : Fragment() {
     }
 
     private fun updateUi () {
+        lifecycleScope.launch {
+            viewModel.isTourSaved().collect{  state ->
+                when (state) {
+                    true -> {
+                        viewBinding.btnSave.setImageResource(R.drawable.ic_saved_active)
+                    }
+                    false -> {
+                        viewBinding.btnSave.setImageResource(R.drawable.ic_saved_inactive)
+                    }
+                }
+            }
+        }
         viewModel.getTour().observe(viewLifecycleOwner, Observer {
-            when (it) {
+            setValues(it)
+            initSlider(it.links)
+            hidePreloader()
+            /*when (it) {
                 is BaseResponse.Error -> {}
                 is BaseResponse.Loading -> {}
                 is BaseResponse.Success -> {
@@ -78,7 +98,7 @@ class TourFragment : Fragment() {
                     initSlider(it.data?.get(0)!!.links)
                     hidePreloader()
                 }
-            }
+            }*/
         })
     }
 

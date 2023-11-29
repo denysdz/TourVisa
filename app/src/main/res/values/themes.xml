@@ -1,6 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.TourVista" parent="Theme.AppCompat.NoActionBar">
+    <!--<style name="Theme.TourVista" parent="Theme.AppCompat.NoActionBar">-->
+    <style name="Theme.TourVista" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -12,4 +13,9 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">#000</item>
     </style>
+
+    <style name="Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">#00000000</item>
+    </style>
+
 </resources>

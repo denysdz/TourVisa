@@ -22,11 +22,13 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigation"
         android:layout_width="match_parent"
+        app:itemActiveIndicatorStyle="@style/Custom.Indicator"
         android:layout_height="58dp"
         android:layout_gravity="start"
         android:background="@drawable/menu_bg"
         android:layout_marginHorizontal="25dp"
         app:itemIconSize="26dp"
+        app:itemBackground="@color/white"
         app:itemPaddingTop="16dp"
         app:itemPaddingBottom="0dp"
         android:paddingHorizontal="15dp"

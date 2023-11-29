@@ -1,5 +1,6 @@
 package com.trip.tourvista.view.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,6 +15,7 @@ import com.trip.tourvista.databinding.FragmentHomeBinding
 import com.trip.tourvista.databinding.FragmentSavedBinding
 import com.trip.tourvista.model.response.BaseResponse
 import com.trip.tourvista.model.response.TourResponse
+import com.trip.tourvista.view.TourActivity
 import com.trip.tourvista.view.adapter.AdapterListener
 import com.trip.tourvista.view.adapter.ItemDecoration
 import com.trip.tourvista.view.adapter.ListAdapter
@@ -72,9 +74,9 @@ class SavedFragment : Fragment(), AdapterListener {
     }
 
     override fun onClick(id: Long) {
-        val bundle = Bundle()
-        bundle.putLong("id", id)
-        findNavController().navigate(R.id.tourFragment, bundle)
+        val tour = Intent(requireContext(), TourActivity::class.java)
+        tour.putExtra("id", id)
+        startActivity(tour)
     }
 
 }

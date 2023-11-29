@@ -1,5 +1,6 @@
 package com.trip.tourvista.view.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Parcelable
 import android.view.LayoutInflater
@@ -15,6 +16,7 @@ import com.trip.tourvista.R
 import com.trip.tourvista.databinding.FragmentAllToursBinding
 import com.trip.tourvista.model.response.BaseResponse
 import com.trip.tourvista.model.response.TourResponse
+import com.trip.tourvista.view.TourActivity
 import com.trip.tourvista.view.adapter.AdapterListener
 import com.trip.tourvista.view.adapter.ItemDecoration
 import com.trip.tourvista.view.adapter.ListAdapter
@@ -48,6 +50,7 @@ class AllToursFragment : Fragment(), AdapterListener {
 
     override fun onResume() {
         super.onResume()
+        /*
         if (listAdapter != null) {
             binding.shimmerLayoutList.stopShimmer()
             binding.shimmerLayoutList.visibility = View.GONE
@@ -55,7 +58,7 @@ class AllToursFragment : Fragment(), AdapterListener {
             viewBinding.tourList.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             viewBinding.tourList.adapter = listAdapter
             (viewBinding.tourList.layoutManager as LinearLayoutManager).scrollToPosition(viewModel.getScrollPosition())
-        }
+        }*/
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -117,17 +120,9 @@ class AllToursFragment : Fragment(), AdapterListener {
     }
 
     override fun onClick(id: Long) {
-        val bundle = Bundle()
-        bundle.putLong("id", id)
-        findNavController().navigate(R.id.tourFragment, bundle)
-    }
-
-    override fun onPause() {
-        super.onPause()
-        if (viewBinding.tourList.layoutManager is LinearLayoutManager) {
-            val layoutManager = viewBinding.tourList.layoutManager as LinearLayoutManager
-            viewModel.saveScrollPosition(layoutManager.findFirstVisibleItemPosition())
-        }
+        val tour = Intent(requireContext(), TourActivity::class.java)
+        tour.putExtra("id", id)
+        startActivity(tour)
     }
 
 }

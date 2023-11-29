@@ -1,38 +1,31 @@
-package com.trip.tourvista.view.fragments
+package com.trip.tourvista.view
 
 import android.content.Intent
 import android.net.Uri
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.core.view.get
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.trip.tourvista.R
-import com.trip.tourvista.databinding.FragmentTourBinding
-import com.trip.tourvista.model.response.BaseResponse
+import com.trip.tourvista.databinding.ActivityTourBinding
 import com.trip.tourvista.model.response.TourResponse
 import com.trip.tourvista.view.adapter.ImageSlideAdapter
-import com.trip.tourvista.view.adapter.ListAdapter
 import com.trip.tourvista.viewmodel.TourViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import java.lang.reflect.Array
 
 
 @AndroidEntryPoint
-class TourFragment : Fragment() {
+class TourActivity : AppCompatActivity() {
 
-    private lateinit var binding:FragmentTourBinding
+    private lateinit var binding: ActivityTourBinding
     private val viewBinding get() = binding
 
     private lateinit var imageSlideAdapter : ImageSlideAdapter
@@ -42,25 +35,19 @@ class TourFragment : Fragment() {
 
     private val viewModel: TourViewModel by viewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentTourBinding.inflate(inflater)
-        return viewBinding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        arguments?.getLong("id").let {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityTourBinding.inflate(layoutInflater)
+        setContentView(viewBinding.root)
+        intent.extras?.getLong("id").let {
             viewModel.loadTour(it!!)
         }
         updateUi()
         viewBinding.btnBack.setOnClickListener {
-            findNavController().popBackStack()
+            finish()
         }
         viewBinding.shimmerContainer.get(0).findViewById<ImageView>(R.id.btn_back).setOnClickListener {
-            findNavController().popBackStack()
+            finish()
         }
         viewBinding.btnSave.setOnClickListener {
             viewModel.save()
@@ -68,7 +55,7 @@ class TourFragment : Fragment() {
         viewBinding.btnBookNow.setOnClickListener {
             if (!moreData.equals("")) {
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(moreData))
-                requireActivity().startActivity(intent)
+                startActivity(intent)
             }
         }
     }
@@ -86,29 +73,20 @@ class TourFragment : Fragment() {
                 }
             }
         }
-        viewModel.getTour().observe(viewLifecycleOwner, Observer {
+        viewModel.getTour().observe(this, Observer {
             setValues(it)
             initSlider(it.links)
             hidePreloader()
-            /*when (it) {
-                is BaseResponse.Error -> {}
-                is BaseResponse.Loading -> {}
-                is BaseResponse.Success -> {
-                    setValues(it.data?.get(0)!!)
-                    initSlider(it.data?.get(0)!!.links)
-                    hidePreloader()
-                }
-            }*/
         })
     }
 
     private fun initSlider (imgs:List<String>) {
-        imageSlideAdapter = ImageSlideAdapter(requireContext(), R.layout.slider_img, imgs)
+        imageSlideAdapter = ImageSlideAdapter(this, R.layout.slider_img, imgs)
         viewBinding.tourSliderImage.adapter = imageSlideAdapter
         initDots(imgs.size)
     }
 
-    private fun setValues (tour:TourResponse) {
+    private fun setValues (tour: TourResponse) {
         moreData = tour.offerSource
         viewBinding.fieldName.text = tour.offerName
         viewBinding.fieldLocation.text = tour.location
@@ -136,8 +114,8 @@ class TourFragment : Fragment() {
         dots = arrayOfNulls<ImageView>(dotsCount)
         viewBinding.dots.removeAllViews()
         for (i in 0 until dotsCount) {
-            dots[i] = ImageView(requireContext())
-            dots[i]?.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.non_active_dot))
+            dots[i] = ImageView(this)
+            dots[i]?.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.non_active_dot))
             val params = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
@@ -145,15 +123,15 @@ class TourFragment : Fragment() {
             params.setMargins(8, 0, 8, 0)
             viewBinding.dots.addView(dots[i], params)
         }
-        dots[0]?.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.active_dot));
+        dots[0]?.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.active_dot));
         viewBinding.tourSliderImage.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
 
             override fun onPageSelected(position: Int) {
                 for (i in 0 until dotsCount) {
-                    dots[i]?.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.non_active_dot))
+                    dots[i]?.setImageDrawable(ContextCompat.getDrawable(this@TourActivity, R.drawable.non_active_dot))
                 }
-                dots[position]?.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.active_dot))
+                dots[position]?.setImageDrawable(ContextCompat.getDrawable(this@TourActivity, R.drawable.active_dot))
             }
 
             override fun onPageScrollStateChanged(state: Int) {}

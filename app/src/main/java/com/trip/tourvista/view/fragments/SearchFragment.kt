@@ -100,7 +100,8 @@ class SearchFragment : Fragment(), AdapterListener {
 
     private fun onSearch () {
         viewModel.findTours(
-            name = viewBinding.editName.text.toString(),
+            name = viewBinding.editTour.text.toString(),
+            location = viewBinding.editLocation.text.toString(),
             min_people = viewBinding.peopleRange.values[0].toInt(),
             max_people = viewBinding.peopleRange.values[1].toInt(),
             start_date = viewBinding.dateFrom.text.toString(),

@@ -21,7 +21,7 @@ interface TourApi {
     @GET("/offers")
     suspend fun getAllOffers(
         @Query("name") name: String,
-        @Query("country") country: String,
+        @Query("location") location: String,
         @Query("min_people_count") min_p: Int,
         @Query("max_people_count") max_p: Int,
         @Query("start_date") start_date: String,

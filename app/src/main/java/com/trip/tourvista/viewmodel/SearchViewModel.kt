@@ -23,6 +23,7 @@ class SearchViewModel @Inject constructor(
 
     fun findTours (
         name:String,
+        location:String,
         min_people:Int,
         max_people:Int,
         start_date:String,
@@ -34,6 +35,7 @@ class SearchViewModel @Inject constructor(
             try {
                 val response = tourRepository.findAllTours(
                     name = name,
+                    location = location,
                     min_people = min_people,
                     max_people = max_people,
                     start_date = start_date,

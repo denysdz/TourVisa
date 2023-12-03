@@ -22,6 +22,7 @@ class TourRepository(private val apiService: TourApi) {
 
     suspend fun findAllTours (
         name:String,
+        location:String,
         min_people:Int,
         max_people:Int,
         start_date:String,
@@ -31,7 +32,7 @@ class TourRepository(private val apiService: TourApi) {
     ): Response<TourResponseWrapper> {
         return apiService.getAllOffers(
             name = name,
-            country = name,
+            location = location,
             min_p = min_people,
             max_p = max_people,
             start_date = start_date,
